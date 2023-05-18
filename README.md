@@ -1,8 +1,10 @@
-## FCL -- The Flexible Collision Library 
+## FCL -- The Flexible Collision Library
 
 Linux / OS X [![Build Status](https://travis-ci.org/flexible-collision-library/fcl.svg?branch=master)](https://travis-ci.org/flexible-collision-library/fcl)
 Windows [![Build status](https://ci.appveyor.com/api/projects/status/do1k727uu6e8uemf/branch/master?svg=true)](https://ci.appveyor.com/project/flexible-collision-library/fcl)
 Coverage [![Coverage Status](https://coveralls.io/repos/github/flexible-collision-library/fcl/badge.svg?branch=master)](https://coveralls.io/github/flexible-collision-library/fcl?branch=master)
+
+[中文说明](./doc/README-Zh.md)
 
 FCL is a library for performing three types of proximity queries on a pair of
 geometric models composed of triangles.
@@ -58,7 +60,7 @@ mkdir build
 cd build
 cmake ..
 ```
-Next, in linux, use make to compile the code. 
+Next, in linux, use make to compile the code.
 
 In windows, there will generate a visual studio project and then you can compile
 the code.
@@ -171,11 +173,11 @@ all the collision pairs. For distance, it can return the pair with the minimum
 distance. FCL uses a CollisionManager structure to manage all the objects
 involving the collision or distance operations.
 ```cpp
-// Initialize the collision manager for the first group of objects. 
+// Initialize the collision manager for the first group of objects.
 // FCL provides various different implementations of CollisionManager.
 // Generally, the DynamicAABBTreeCollisionManager would provide the best
 // performance.
-BroadPhaseCollisionManagerf* manager1 = new DynamicAABBTreeCollisionManagerf(); 
+BroadPhaseCollisionManagerf* manager1 = new DynamicAABBTreeCollisionManagerf();
 // Initialize the collision manager for the second group of objects.
 BroadPhaseCollisionManagerf* manager2 = new DynamicAABBTreeCollisionManagerf();
 // To add objects into the collision manager, using
@@ -189,7 +191,7 @@ std::vector<CollisionObjectf*> objects2 = ...
 manager2->registerObjects(objects2);
 // In order to collect the information during broadphase, CollisionManager
 // requires two settings:
-// a) a callback to collision or distance; 
+// a) a callback to collision or distance;
 // b) an intermediate data to store the information generated during the
 //    broadphase computation.
 // For convenience, FCL provides default callbacks to satisfy a) and a
@@ -208,7 +210,7 @@ manager2->setup();
 // Examples for various queries
 // 1. Collision query between two object groups and get collision numbers
 manager2->collide(manager1, &collision_data, DefaultCollisionFunction);
-int n_contact_num = collision_data.result.numContacts(); 
+int n_contact_num = collision_data.result.numContacts();
 // 2. Distance query between two object groups and get the minimum distance
 manager2->distance(manager1, &distance_data, DefaultDistanceFunction);
 double min_distance = distance_data.result.min_distance;
